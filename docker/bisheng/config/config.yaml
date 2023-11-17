@@ -1,18 +1,18 @@
 # 数据库配置
 database_url:
-  "mysql+pymysql://root:1234@mysql:3306/bisheng?charset=utf8mb4"
+  "mysql+pymysql://root:alexhope@mysql:3306/bisheng?charset=utf8mb4"
 
 # 缓存配置  redis://[[username]:[password]]@localhost:6379/0
 redis_url: "redis://redis:6379/0"
 
-environment:
-  env: dev
-  uns_support: ['png','jpg','jpeg','bmp','doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt', 'md', 'html', 'pdf']
+environment: dev
+#  env: dev
+#  uns_support: ['png','jpg','jpeg','bmp','doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt', 'md', 'html', 'pdf']
 
 # admin 用户配置
 admin:
   user_name: "admin"
-  password: "1234"
+  password: "alexhope426"
       
 agents:
   ZeroShotAgent:
