@@ -121,21 +121,21 @@ export const LoginPage = () => {
                     {/* link */}
                     <div className=" absolute right-8 bottom-4 flex h-[28px]">
                         <span className="mr-4 text-sm text-gray-400 relative top-2">v{json.version}</span>
-                        <TooltipProvider>
+                        {/* <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger className="flex-1 py-1 px-1 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
-                                    <a href={"https://github.com/dataelement/bisheng"} target="_blank">
+                                    <a href={""} target="_blank">
                                         <Github className="side-bar-button-size mx-auto" />
                                     </a>
                                 </TooltipTrigger>
                                 <TooltipContent className="z-10"><p>github</p></TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
-                        <Separator className="mx-1" orientation="vertical" />
+                        <Separator className="mx-1" orientation="vertical" /> */}
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger className="flex-1 py-1 px-1 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
-                                    <a href={"https://m7a7tqsztt.feishu.cn/wiki/ZxW6wZyAJicX4WkG0NqcWsbynde"} target="_blank">
+                                    <a href={""} target="_blank">
                                         <BookOpen className="side-bar-button-size mx-auto" />
                                     </a>
                                 </TooltipTrigger>

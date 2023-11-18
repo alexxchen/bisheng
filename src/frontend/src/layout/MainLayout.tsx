@@ -84,22 +84,22 @@ export default function MainLayout() {
                             <TooltipContent><p>{options[language]}</p></TooltipContent>
                         </Tooltip>
                     </TooltipProvider> */}
-                    <Separator className="mx-1" orientation="vertical" />
+                    {/* <Separator className="mx-1" orientation="vertical" />
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger className="flex-1 py-1 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
-                                <Link to={"https://github.com/dataelement/bisheng"} target="_blank">
+                                <Link to={""} target="_blank">
                                     <Github className="side-bar-button-size mx-auto" />
                                 </Link>
                             </TooltipTrigger>
                             <TooltipContent><p>github</p></TooltipContent>
                         </Tooltip>
-                    </TooltipProvider>
+                    </TooltipProvider> */}
                     <Separator className="mx-1" orientation="vertical" />
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger className="flex-1 py-1 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
-                                <Link to={"https://m7a7tqsztt.feishu.cn/wiki/ZxW6wZyAJicX4WkG0NqcWsbynde"} target="_blank">
+                                <Link to={""} target="_blank">
                                     <BookOpen className="side-bar-button-size mx-auto" />
                                 </Link>
                             </TooltipTrigger>
@@ -141,10 +141,10 @@ export default function MainLayout() {
             <div className="w-10/12 bg-gray-50 mx-auto mt-[30%] rounded-xl px-4 py-10">
                 <p className=" text-sm text-center">{t('menu.forBestExperience')}</p>
                 <div className="flex mt-8 justify-center gap-4">
-                    <a href={"https://github.com/dataelement/bisheng"} target="_blank">
+                    <a href={""} target="_blank">
                         <Github className="side-bar-button-size mx-auto" />Github
                     </a>
-                    <a href={"https://m7a7tqsztt.feishu.cn/wiki/ZxW6wZyAJicX4WkG0NqcWsbynde"} target="_blank">
+                    <a href={""} target="_blank">
                         <BookOpen className="side-bar-button-size mx-auto" /> {t('menu.onlineDocumentation')}
                     </a>
                 </div>

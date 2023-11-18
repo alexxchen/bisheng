@@ -1,5 +1,5 @@
 {
-    "title": "文擎毕昇",
+    "title": "智能文献管理",
     "prompt": "提示",
     "login": {
         "slogen": "便捷、灵活、可靠的企业级大模型应用开发平台",
@@ -235,9 +235,9 @@
         "complete": "完成",
         "setSplitSize": "请设置文件切分大小",
         "selectFileToUpload": "请先选择文件上传",
-        "fileSizeExceedsLimit": "文件不能超50M",
+        "fileSizeExceedsLimit": "文件不能超200M",
         "file": "文件",
-        "sizeExceedsLimit": "超过50M",
+        "sizeExceedsLimit": "超过200M",
         "editDictionary": "编辑词典"
     },
     "confirmButton": "确定",

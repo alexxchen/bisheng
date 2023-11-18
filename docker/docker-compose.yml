@@ -30,7 +30,8 @@ services:
         ipv4_address: 172.30.0.3
 
   backend:
-    image: dataelement/bisheng-backend:v0.1.9.5
+    # image: dataelement/bisheng-backend:v0.1.9.5
+    image: local-bisheng-backend:v0.1.9.5
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7860/health"]
       interval: 1m30s
@@ -54,7 +55,8 @@ services:
         ipv4_address: 172.30.0.4
 
   nginx:
-    image: dataelement/bisheng-frontend:v0.1.9.5
+    # image: dataelement/bisheng-frontend:v0.1.9.5
+    image: local-bisheng-fronted:v0.1.9.5
     ports:
       - "3001:3001"
     volumes:
@@ -83,8 +85,8 @@ services:
     container_name: milvus-minio
     image: minio/minio:RELEASE.2023-03-20T20-16-18Z
     environment:
-      MINIO_ACCESS_KEY: minioadmin
-      MINIO_SECRET_KEY: minioadmin
+      MINIO_ACCESS_KEY: jhchenminioadmon
+      MINIO_SECRET_KEY: alexhope426minioadmon
     volumes:
       - ~/data/bisheng-data/volumes/minio:/minio_data
     command: minio server /minio_data
@@ -93,6 +95,8 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+    ports:
+      - "9000:9000"
     networks:
       proxy:
         ipv4_address: 172.30.0.7
@@ -104,6 +108,8 @@ services:
     environment:
       ETCD_ENDPOINTS: etcd:2379
       MINIO_ADDRESS: minio:9000
+      minio.accessKeyID: jhchenminioadmon
+      minio.secretAccessKey: alexhope426minioadmon
     volumes:
       - ~/data/bisheng-data/volumes/milvus:/var/lib/milvus
     ports:
@@ -121,8 +127,9 @@ services:
     image: dataelement/bisheng-rt:0.0.4
     # image: bisheng-rt-modify
     working_dir: /opt/bisheng-rt
-    # command: ./bin/rtserver f
-    command: bash bin/entrypoint.sh --serveraddr="10.10.42.114"
+    command: ./bin/rtserver f
+    #  for elem model
+    # command: bash bin/entrypoint.sh --serveraddr="10.10.42.114"
     shm_size: 10gb
     deploy:
       resources:
@@ -131,10 +138,10 @@ services:
             - driver: nvidia
               device_ids: ['0', '1']
               capabilities: [gpu]
-    ports:
-      - "9000:9000"
-      - "9001:9001"
-      - "9002:9002"
+    # ports:
+    #   - "9000:9000"
+    #   - "9001:9001"
+    #   - "9002:9002"
     volumes:
       - /home/station/data/bisheng-data/models:/opt/bisheng-rt/models/model_repository
     networks:

@@ -11,7 +11,7 @@ export default function CrashErrorComponent({ error, resetErrorBoundary }) {
         </p>
         <div className="flex justify-center gap-4">
           <a
-            href="https://github.com/dataelement/bisheng/issues/new"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className="rounded bg-status-red px-4 py-2 font-bold text-background hover:bg-error-foreground"

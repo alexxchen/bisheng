@@ -1,5 +1,5 @@
 {
-    "title": "BISHENG",
+    "title": "AI Document Management",
     "prompt": "Prompt",
     "login": {
         "slogen": "Convenient, Flexible, Reliable Enterprise-Level Large Model Application Development Platform",
@@ -236,9 +236,9 @@
         "complete": "Complete",
         "setSplitSize": "Please set the file split size",
         "selectFileToUpload": "Please select a file to upload first",
-        "fileSizeExceedsLimit": "File size cannot exceed 50MB",
+        "fileSizeExceedsLimit": "File size cannot exceed 200MB",
         "file": "File",
-        "sizeExceedsLimit": "Size exceeds 50MB"
+        "sizeExceedsLimit": "Size exceeds 200MB"
     },
     "confirmButton": "Confirm",
     "add": "Add",
