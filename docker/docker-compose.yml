@@ -31,6 +31,7 @@ services:
 
   backend:
     # image: dataelement/bisheng-backend:v0.1.9.5
+    # local rebuild for minio https connections
     image: local-bisheng-backend:v0.1.9.5
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7860/health"]
@@ -41,6 +42,8 @@ services:
     volumes:
       - ~/data/bisheng-data/bisheng/config/config.yaml:/app/bisheng/config.yaml
       - ~/data/bisheng-data/bisheng/data/:/app/data/
+      - ~/data/bisheng-data/bisheng/milvus.py:/usr/local/lib/python3.10/site-packages/langchain/vectorstores/milvus.py
+      - ~/data/bisheng-data/bisheng/host_embedding.py:/usr/local/lib/python3.10/site-packages/bisheng_langchain/embeddings/host_embedding.py
     ports:
       - "7860:7860"
     security_opt:
@@ -125,7 +128,6 @@ services:
   bishengrt:
     container_name: bisheng_rt_v00x
     image: dataelement/bisheng-rt:0.0.4
-    # image: bisheng-rt-modify
     working_dir: /opt/bisheng-rt
     command: ./bin/rtserver f
     #  for elem model
@@ -144,6 +146,7 @@ services:
     #   - "9002:9002"
     volumes:
       - /home/station/data/bisheng-data/models:/opt/bisheng-rt/models/model_repository
+    #   - /home/station/data/bisheng-data/bisheng-rt/log/:/opt/bisheng-rt/log/
     networks:
       proxy:
         ipv4_address: 172.30.0.9

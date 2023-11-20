@@ -99,14 +99,16 @@ export const LoginPage = () => {
                             </div>
                         }
                         {
-                            showLogin ? <>
-                                <div className="text-center"><a href="javascript:;" className=" text-blue-500 text-sm underline" onClick={() => setShowLogin(false)}>{t('login.noAccountRegister')}</a></div>
+                            // showLogin ? 
+                            <>
+                                <div className="text-center"><a href="javascript:;" className=" text-blue-500 text-sm underline">{t('')}</a></div>
                                 <Button disabled={isLoading} onClick={handleLogin} >{t('login.loginButton')}</Button>
-                            </> :
-                                <>
-                                    <div className="text-center"><a href="javascript:;" className=" text-blue-500 text-sm underline" onClick={() => setShowLogin(true)}>{t('login.haveAccountLogin')}</a></div>
-                                    <Button disabled={isLoading} onClick={handleRegister} >{t('login.registerButton')}</Button>
-                                </>
+                            </>
+                            //  :
+                            // <>
+                            //     <div className="text-center"><a href="javascript:;" className=" text-blue-500 text-sm underline" onClick={() => setShowLogin(true)}>{t('login.haveAccountLogin')}</a></div>
+                            //     <Button disabled={isLoading} onClick={handleRegister} >{t('login.registerButton')}</Button>
+                            // </>
                         }
                     </div>
                     <div className="relative mt-4">
