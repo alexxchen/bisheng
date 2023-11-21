@@ -113,6 +113,7 @@ services:
       MINIO_ADDRESS: minio:9000
       minio.accessKeyID: jhchenminioadmon
       minio.secretAccessKey: alexhope426minioadmon
+    #   deploy.resources.limits.memory: 20G
     volumes:
       - ~/data/bisheng-data/volumes/milvus:/var/lib/milvus
     ports:
