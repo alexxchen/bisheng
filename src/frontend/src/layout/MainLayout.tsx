@@ -45,11 +45,11 @@ export default function MainLayout() {
                 <NavLink to='/filelib' className="navlink inline-flex rounded-md text-sm px-4 py-2 mt-1 w-full hover:bg-secondary/80">
                     <HardDrive /><span className="mx-3">{t('menu.knowledge')}</span>
                 </NavLink>
-                <NavLink to='/model' className="navlink inline-flex rounded-md text-sm px-4 py-2 mt-1 w-full hover:bg-secondary/80">
-                    <Puzzle /><span className="mx-3">{t('menu.models')}</span>
-                </NavLink>
                 {
                     user.role === 'admin' && <>
+                        <NavLink to='/model' className="navlink inline-flex rounded-md text-sm px-4 py-2 mt-1 w-full hover:bg-secondary/80">
+                            <Puzzle /><span className="mx-3">{t('menu.models')}</span>
+                        </NavLink>
                         <NavLink to='/sys' className="navlink inline-flex rounded-md text-sm px-4 py-2 mt-1 w-full hover:bg-secondary/80">
                             <Settings /><span className="mx-3">{t('menu.system')}</span>
                         </NavLink>

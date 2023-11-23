@@ -44,6 +44,9 @@ services:
       - ~/data/bisheng-data/bisheng/data/:/app/data/
       - ~/data/bisheng-data/bisheng/milvus.py:/usr/local/lib/python3.10/site-packages/langchain/vectorstores/milvus.py
       - ~/data/bisheng-data/bisheng/host_embedding.py:/usr/local/lib/python3.10/site-packages/bisheng_langchain/embeddings/host_embedding.py
+      - ~/data/bisheng-data/bisheng/elem_unstrcutured_loader.py:/usr/local/lib/python3.10/site-packages/bisheng_langchain/document_loaders/elem_unstrcutured_loader.py
+      - ~/data/bisheng-data/bisheng/utils.py:/app/bisheng/chat/utils.py
+      - ~/data/bisheng-data/bisheng/base.py:/app/bisheng/database/base.py
     ports:
       - "7860:7860"
     security_opt:
@@ -59,12 +62,15 @@ services:
 
   nginx:
     # image: dataelement/bisheng-frontend:v0.1.9.5
-    image: local-bisheng-fronted:v0.1.9.5
+    image: local-bisheng-frontend:v0.1.9.5
     ports:
       - "3001:3001"
     volumes:
       - ~/data/bisheng-data/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ~/data/bisheng-data/nginx/conf.d:/etc/nginx/conf.d
+      - ~/data/bisheng-data/nginx/html/locales/:/usr/share/nginx/html/locales/
+      - ~/data/bisheng-data/nginx/html/logo.jpeg:/usr/share/nginx/html/logo.jpeg
+      - ~/data/bisheng-data/nginx/html/favicon.ico:/usr/share/nginx/html/favicon.ico
     networks:
       proxy:
         ipv4_address: 172.30.0.5
@@ -130,9 +136,9 @@ services:
     container_name: bisheng_rt_v00x
     image: dataelement/bisheng-rt:0.0.4
     working_dir: /opt/bisheng-rt
-    command: ./bin/rtserver f
+    # command: ./bin/rtserver f
     #  for elem model
-    # command: bash bin/entrypoint.sh --serveraddr="10.10.42.114"
+    command: bash bin/entrypoint.sh --serveraddr="10.10.42.114"
     shm_size: 10gb
     deploy:
       resources:
@@ -152,16 +158,19 @@ services:
       proxy:
         ipv4_address: 172.30.0.9
 
-  unstructured:
-    container_name: bisheng_uns_v001
-    image: dataelement/bisheng-unstructured:0.0.2
-    working_dir: /opt/bisheng-unstructured
-    command: bash bin/entrypoint.sh
-    ports:
-      - "10001:10001"
-    networks:
-      proxy:
-        ipv4_address: 172.30.0.10
+#   unstructured:
+#     container_name: bisheng_uns_v001
+#     image: dataelement/bisheng-unstructured:0.0.2
+#     working_dir: /opt/bisheng-unstructured
+#     command: bash bin/entrypoint.sh
+#     ports:
+#       - "10001:10001"
+#     volumes:
+#       - /home/station/data/bisheng-data/bisheng-unstructured/config.json:/opt/bisheng-unstructured/config/config.json
+#       - /home/station/data/bisheng-data/bisheng-unstructured/entrypoint.sh:/opt/bisheng-unstructured/bin/entrypoint.sh
+#     networks:
+#       proxy:
+#         ipv4_address: 172.30.0.10
 
   elasticsearch:
     container_name: elasticsearch

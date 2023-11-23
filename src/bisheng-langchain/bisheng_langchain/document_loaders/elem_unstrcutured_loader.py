@@ -101,7 +101,9 @@ class ElemUnstructuredLoader(BasePDFLoader):
         resp = requests.post(
             self.unstructured_api_url,
             headers=self.headers,
-            json=payload).json()
+            json=payload)
+        logging.getLogger('bisheng').info(resp)
+        resp = resp.json()
 
         partitions = resp['partitions']
         content, metadata = merge_partitions(partitions)
