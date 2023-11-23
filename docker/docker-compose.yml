@@ -158,19 +158,19 @@ services:
       proxy:
         ipv4_address: 172.30.0.9
 
-#   unstructured:
-#     container_name: bisheng_uns_v001
-#     image: dataelement/bisheng-unstructured:0.0.2
-#     working_dir: /opt/bisheng-unstructured
-#     command: bash bin/entrypoint.sh
-#     ports:
-#       - "10001:10001"
-#     volumes:
-#       - /home/station/data/bisheng-data/bisheng-unstructured/config.json:/opt/bisheng-unstructured/config/config.json
-#       - /home/station/data/bisheng-data/bisheng-unstructured/entrypoint.sh:/opt/bisheng-unstructured/bin/entrypoint.sh
-#     networks:
-#       proxy:
-#         ipv4_address: 172.30.0.10
+  unstructured:
+    container_name: bisheng_uns_v001
+    image: dataelement/bisheng-unstructured:0.0.2
+    working_dir: /opt/bisheng-unstructured
+    command: bash bin/entrypoint.sh
+    ports:
+      - "10001:10001"
+    volumes:
+      - /home/station/data/bisheng-data/bisheng-unstructured/config.json:/opt/bisheng-unstructured/config/config.json
+      - /home/station/data/bisheng-data/bisheng-unstructured/entrypoint.sh:/opt/bisheng-unstructured/bin/entrypoint.sh
+    networks:
+      proxy:
+        ipv4_address: 172.30.0.10
 
   elasticsearch:
     container_name: elasticsearch

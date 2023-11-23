@@ -241,11 +241,11 @@
         "file": "文件",
         "sizeExceedsLimit": "超过50M",
         "editDictionary": "编辑词典",
-        "exportCodeDialogTip": "生成代码，将流程集成到外部应用程序中 (打开此页面前请先build技能)。"
+        "exportCodeDialogTip": "生成代码，将流程集成到外部应用程序中 (打开此页面前请先build应用)。"
     },
     "status": {
-        "1004": "该技能已被删除",
-        "1008": "当前技能未上线，无法直接对话",
+        "1004": "该应用已被删除",
+        "1008": "当前应用未上线，无法直接对话",
         "1005": ""
     },
     "confirmButton": "确定",
