@@ -5,7 +5,7 @@ from bisheng.utils.logger import logger
 from bisheng_langchain.chat_models import HostQwenChat
 from fastapi import WebSocket
 from langchain import LLMChain, PromptTemplate
-
+from langchain.chat_models import ChatOpenAI
 
 async def process_graph(
     langchain_object,
@@ -38,11 +38,11 @@ async def process_graph(
         raise e
 
 
-prompt_template = '''分析给定Question，提取Question中包含的KeyWords，输出列表形式
+prompt_template = '''You will be provided with a block of text, and your task is to extract a list of keywords from it, and output them in a list format
 
 Examples:
-Question: 达梦公司在过去三年中的流动比率如下：2021年：3.74倍；2020年：2.82倍；2019年：2.05倍。
-KeyWords: ['过去三年', '流动比率', '2021', '3.74', '2020', '2.82', '2019', '2.05']
+Question: The current ratio of Dameng Company in the past three years is as follows: 2021: 3.74 times; 2020: 2.82 times; 2019: 2.05 times. 
+KeyWords: ['past three years', 'current ratio', '2021', '3.74', '2020', '2.82', '2019', '2.05']
 
 ----------------
 Question: {question}'''
@@ -53,12 +53,20 @@ def extract_answer_keys(answer, extract_model, host_base_url):
     提取answer中的关键词
     """
     if extract_model:
-        llm = HostQwenChat(model_name=extract_model,
-                           host_base_url=host_base_url,
-                           max_tokens=8192,
-                           temperature=0,
-                           top_p=1,
-                           verbose=True)
+        # llm = HostQwenChat(model_name=extract_model,
+        #                    host_base_url=host_base_url,
+        #                    max_tokens=8192,
+        #                    temperature=0,
+        #                    top_p=1,
+        #                    verbose=True)
+        llm = ChatOpenAI(
+            streaming=False,
+            openai_api_key=host_base_url['api_key'],
+            openai_api_base=host_base_url['api_base'],
+            model_name=extract_model,
+            temperature=0
+            )
+
         llm_chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template(prompt_template))
     try:
         keywords_str = llm_chain.run(answer)

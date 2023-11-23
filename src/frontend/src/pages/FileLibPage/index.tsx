@@ -161,7 +161,7 @@ export default function FileLibPage() {
             <Tabs defaultValue="account" className="w-full">
                 <TabsList className="">
                     <TabsTrigger value="account" className="roundedrounded-xl">{t('lib.fileData')}</TabsTrigger>
-                    <TabsTrigger disabled value="password">{t('lib.structuredData')}</TabsTrigger>
+                    {/* <TabsTrigger disabled value="password">{t('lib.structuredData')}</TabsTrigger> */}
                 </TabsList>
 
                 <TabsContent value="account">
