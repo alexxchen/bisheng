@@ -4,6 +4,7 @@ import logging
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import requests
+import numpy as np
 from langchain.embeddings.base import Embeddings
 from langchain.utils import get_from_dict_or_env
 from pydantic import BaseModel, Extra, Field, root_validator
@@ -110,7 +111,14 @@ class HostEmbeddings(BaseModel, Embeddings):
             return []
         """Embed search docs."""
         texts = [text for text in texts if text]
-        embeddings = embed_with_retry(self, texts=texts, type='doc')
+        max_length = 768
+        iters = int(np.ceil(len(texts)/max_length))
+        embeddings = []
+        for i in range(iters):
+            start = i * max_length
+            end = (i+1) * max_length
+            batch_texts = texts[start:end]
+            embeddings.extend(embed_with_retry(self, texts=batch_texts, type='doc'))
         return embeddings
 
     def embed_query(self, text: str) -> List[float]:

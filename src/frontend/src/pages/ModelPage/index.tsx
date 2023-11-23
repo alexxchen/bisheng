@@ -205,7 +205,7 @@ export default function FileLibPage() {
         <Tabs defaultValue="account" className="w-full">
             <TabsList className="">
                 <TabsTrigger value="account" className="roundedrounded-xl">{t('model.modelManagement')}</TabsTrigger>
-                <TabsTrigger disabled value="password">{t('model.modelFineTune')}</TabsTrigger>
+                {/* <TabsTrigger disabled value="password">{t('model.modelFineTune')}</TabsTrigger> */}
             </TabsList>
             <TabsContent value="account">
                 <div className="flex justify-end gap-4">
